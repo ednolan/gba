@@ -17,12 +17,6 @@ use crate::{
   mmio::{DMA3_SRC, IME, MGBA_LOG_ENABLE, WAITCNT},
 };
 
-const DMA_32_BIT_MEMCPY: DmaControl =
-  DmaControl::new().with_transfer_32bit(true).with_enabled(true);
-
-const DMA3_OFFSET: usize = DMA3_SRC.as_usize() - 0x0400_0000;
-const WAITCNT_OFFSET: usize = WAITCNT.as_usize() - 0x0400_0000;
-
 // Proc-macros can't see the target being built for, so we use this declarative
 // macro to determine if we're on a thumb target (and need to force our asm into
 // a32 mode) or if we're not on thumb (and our asm can pass through untouched).
